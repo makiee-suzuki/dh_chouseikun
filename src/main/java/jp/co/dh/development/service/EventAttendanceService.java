@@ -27,6 +27,10 @@ public class EventAttendanceService extends AbstractService<EventAttendance> {
     public EventAttendance findById(Long eventAttendanceId) {
         return select().id(eventAttendanceId).getSingleResult();
     }
+    
+    public EventAttendance findWithMemberById(Long eventAttendanceId) {
+        return select().id(eventAttendanceId).innerJoin("member").getSingleResult();
+    }
 
     /**
      * 識別子の昇順ですべてのエンティティを検索します。
